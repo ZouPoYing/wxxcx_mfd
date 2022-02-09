@@ -1,0 +1,6 @@
+<!--pages/home/home.wxml-->
+<view>{{message}}</view>
+<view wx:for="{{movies}}" wx:key="index">{{item.name}}</view>
+<view>count：{{count}}</view>
+<button size="mini" bind:tap="add">+</button>
+<button size="mini" bind:tap="de">-</button>
