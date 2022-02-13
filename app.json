@@ -6,11 +6,33 @@
     "pages/my/my"
   ],
   "window":{
-    "backgroundTextStyle":"light",
+    "backgroundTextStyle":"dark",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "咕咕美发店",
-    "navigationBarTextStyle":"black"
+    "navigationBarTextStyle":"black",
+    "enablePullDownRefresh": true,
+    "backgroundColor": "#efefef"
   },
-  "style": "v2",
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "text": "home",
+        "iconPath": "/images/tabbar/home.png",
+        "selectedIconPath": "/images/tabbar/home-active.png"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "text": "my",
+        "iconPath": "/images/tabbar/my.png",
+        "selectedIconPath": "/images/tabbar/my-active.png"
+      }
+    ]
+  },
+  "usingComponents": {
+    "v-btn": "@vant/weapp/button/index",
+    "v-row": "@vant/weapp/row/index",
+    "v-col": "@vant/weapp/col/index"
+  },
   "sitemapLocation": "sitemap.json"
 }

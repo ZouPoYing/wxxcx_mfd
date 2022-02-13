@@ -1,2 +1,18 @@
-<!--pages/my/my.wxml-->
-<text>pages/my/my.wxml</text>
+<view class="userinfo">
+    <v-row wx:if="{{!hasUserInfo}}">
+        <v-col offset="8" span="8">
+            <v-btn bindtap="getUserProfile"> 登录小程序 </v-btn>
+        </v-col>
+    </v-row>
+    <v-row wx:else>
+        <v-col span="4">
+            <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="widthFix"></image>
+        </v-col>
+        <v-col span="20">
+            <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+            <text class="userinfo-usertype">{{userType}}</text>
+        </v-col>
+    </v-row>
+</view>
+
+<v-btn open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">获取手机号</v-btn>

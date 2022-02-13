@@ -11,10 +11,26 @@ Page({
       {name:"zeb",song:"strain"},
       {name:"bob",song:"anyway"}
     ],
-    count: 0
-
+    count: 0,
+    msg: '',
+    userInfo: {},
+    hasUserInfo: false,
+    canIUseGetUserProfile: false
   },
-
+  houduanButton1() {
+    wx.request({
+      url: 'http://localhost:8080/hello',
+      method: 'GET',
+      header: {
+        'content-type': 'application/json' // 默认值
+      },
+      success: (res) => {
+        this.setData({
+          msg : res.data
+        })
+      }
+    })
+  },
   add() {
     this.setData({
       count: ++this.data.count
@@ -25,11 +41,27 @@ Page({
       count: --this.data.count
     })
   },
+  getUserProfile(e) {
+    console.log(e);
+    wx.getUserProfile({
+      desc: '用于完善会员资料', 
+      success: (res) => {
+        this.setData({
+          userInfo: res.userInfo,
+          hasUserInfo: true
+        })
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    if (wx.getUserProfile) {
+      this.setData({
+        canIUseGetUserProfile: true
+      })
+    }
   },
 
   /**

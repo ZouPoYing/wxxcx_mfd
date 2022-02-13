@@ -1,1 +1,5 @@
-/* pages/my/my.wxss */
+.userinfo-avatar {
+    width: 100rpx;
+    border-radius: 50rpx;
+    float: right;
+}

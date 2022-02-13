@@ -4,3 +4,5 @@
 <view>count：{{count}}</view>
 <button size="mini" bind:tap="add">+</button>
 <button size="mini" bind:tap="de">-</button>
+<button bindtap='houduanButton1'>点击发起请求</button>
+<view>请求的数据：{{msg}}</view>
