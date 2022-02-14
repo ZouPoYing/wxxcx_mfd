@@ -30,9 +30,12 @@
     ]
   },
   "usingComponents": {
+    "card-view": "/components/card-view/card-view",
     "v-btn": "@vant/weapp/button/index",
     "v-row": "@vant/weapp/row/index",
-    "v-col": "@vant/weapp/col/index"
+    "v-col": "@vant/weapp/col/index",
+    "v-img": "@vant/weapp/image/index",
+    "v-toast": "@vant/weapp/toast/index"
   },
   "sitemapLocation": "sitemap.json"
 }

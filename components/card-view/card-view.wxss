@@ -1,0 +1,8 @@
+/* components/card-view/card-view.wxss */
+.card-view {
+    border-radius: 40rpx;
+    box-shadow: 0 16rpx 24rpx #ebedf0;
+    margin: 0 20rpx 48rpx 20rpx;
+    padding: 48rpx;
+    border: 5rpx black;
+}

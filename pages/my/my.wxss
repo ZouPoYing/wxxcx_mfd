@@ -1,5 +1,19 @@
-.userinfo-avatar {
-    width: 100rpx;
-    border-radius: 50rpx;
-    float: right;
+.view-loginbtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 1000rpx;
+}
+
+.userinfo-nickname {
+    margin-left: 20rpx;
+    font-weight: 700;
+}
+
+.userinfo-usertype {
+    margin-left: 20rpx;
+}
+
+.btn-ral {
+    margin-left: 20rpx;
 }

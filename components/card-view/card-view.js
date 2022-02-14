@@ -1,4 +1,4 @@
-// components/test/test.js
+// components/card-view/card-view.js
 Component({
     /**
      * 组件的属性列表

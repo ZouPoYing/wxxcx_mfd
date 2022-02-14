@@ -6,3 +6,5 @@
 <button size="mini" bind:tap="de">-</button>
 <button bindtap='houduanButton1'>点击发起请求</button>
 <view>请求的数据：{{msg}}</view>
+<card-view></card-view>
+<card-view></card-view>

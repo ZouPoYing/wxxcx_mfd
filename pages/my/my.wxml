@@ -1,18 +1,24 @@
-<view class="userinfo">
-    <v-row wx:if="{{!hasUserInfo}}">
-        <v-col offset="8" span="8">
-            <v-btn bindtap="getUserProfile"> 登录小程序 </v-btn>
-        </v-col>
-    </v-row>
-    <v-row wx:else>
-        <v-col span="4">
-            <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="widthFix"></image>
-        </v-col>
-        <v-col span="20">
-            <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-            <text class="userinfo-usertype">{{userType}}</text>
-        </v-col>
-    </v-row>
+<view class="my">
+    <view class="view-loginbtn" wx:if="{{!hasUserInfo}}">
+        <v-btn bindtap="getUserProfile">微信登录</v-btn>
+    </view>
+    <view class="userinfo" wx:else>
+        <card-view>
+            <v-row>
+                <v-col span="4">
+                    <v-img round bindtap="bindViewTap" fit="cover" width="50" height="50" src="{{userInfo.avatarUrl}}"></v-img>
+                </v-col>
+                <v-col span="20">
+                    <view>
+                        <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+                    </view>
+                    <view>
+                        <text class="userinfo-usertype">{{userType}}</text>
+                    </view>
+                    <v-btn class="btn-ral" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" size="mini">注册登录</v-btn>
+                </v-col>
+            </v-row>
+        </card-view>
+    </view>
 </view>
-
-<v-btn open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">获取手机号</v-btn>
+<van-toast id="van-toast" />

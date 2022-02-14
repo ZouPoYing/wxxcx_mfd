@@ -19,7 +19,7 @@ Page({
   },
   houduanButton1() {
     wx.request({
-      url: 'http://localhost:8080/hello',
+      url: 'http://localhost:8080/api/hs/test',
       method: 'GET',
       header: {
         'content-type': 'application/json' // 默认值
