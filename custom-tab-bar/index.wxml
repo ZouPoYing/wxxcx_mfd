@@ -1,0 +1,17 @@
+<v-tabbar active="{{ active }}" bind:change="onChange">
+    <v-tabbar-item wx:for="{{list}}" wx:key="index" info="{{item.info ? item.info : ''}}">
+    <image
+      slot="icon"
+      src="{{item.iconPath}}"
+      mode="aspectFit"
+      style="width: 25px; height: 25px;"
+    />
+    <image
+      slot="icon-active"
+      src="{{item.selectedIconPath}}"
+      mode="aspectFit"
+      style="width: 25px; height: 25px;"
+    />
+    {{item.text}}
+  </v-tabbar-item>
+</v-tabbar>

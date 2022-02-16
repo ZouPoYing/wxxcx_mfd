@@ -8,3 +8,4 @@
 <view>请求的数据：{{msg}}</view>
 <card-view></card-view>
 <card-view></card-view>
+<v-toast id="van-toast" />

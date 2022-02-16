@@ -24,6 +24,7 @@ App({
     iv : '',
     code : '',
     sessionkey: '',
-    openid: ''
+    openid: '',
+    api: 'http://localhost:9191/hs/'
   }
 })

@@ -15,10 +15,22 @@
                     <view>
                         <text class="userinfo-usertype">{{userType}}</text>
                     </view>
-                    <v-btn class="btn-ral" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" size="mini">注册登录</v-btn>
+                    <text class="userinfo-phoneNumber">{{userInfo.phoneNumber}}</text>
+                    <v-btn wx:if="{{!userInfo.phoneNumber}}" class="btn-ral" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" size="mini">注册登录</v-btn>
+                    <v-btn wx:else class="btn-ral" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" size="mini">更换账号</v-btn>
                 </v-col>
             </v-row>
         </card-view>
+        <van-grid clickable  column-num="3">
+            <view wx:for="{{app}}" wx:key="index">
+                <van-grid-item 
+                link-type="navigateTo"
+                url="{{item.link}}"
+                icon="{{item.img}}"
+                text="{{item.title}}"
+                />
+            </view>
+        </van-grid>
     </view>
 </view>
-<van-toast id="van-toast" />
+<v-toast id="van-toast" />

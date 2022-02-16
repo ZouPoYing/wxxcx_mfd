@@ -1,16 +1,14 @@
-import {
-  createStoreBindings
-} from "mobx-miniprogram-bindings"
-import {
-  store
-} from "../../store/store"
+import { createStoreBindings } from "mobx-miniprogram-bindings"
+import { store } from "../../store/store"
+import { Toast } from '../../miniprogram_npm/@vant/weapp/toast/toast'
 
 var WXBizDataCrypt = require('../../utils/RdWXBizDataCrypt.js');
 var app = getApp();
 
 Page({
   data: {
-    userInfo: {},
+    userInfo: [],
+    app: [],
     hasUserInfo: false,
     userType: '游客',
     sessionkey: '',
@@ -25,6 +23,7 @@ Page({
           hasUserInfo: true
         })
         this.setUserInfo(res.userInfo)
+        this.getAppByPhoneNumber(null)
       }
     })
   },
@@ -56,18 +55,52 @@ Page({
         getApp().globalData.openid = res.data.openid
         var pc = new WXBizDataCrypt(app.globalData.appID, app.globalData.sessionkey)
         var data = pc.decryptData(app.globalData.encryptedData, app.globalData.iv)
-        console.log('解密后 data: ', data)
-        console.log('手机号码: ', data.phoneNumber)
+        this.registerAndLoginByPhoneNumber(data.phoneNumber)
+        this.getAppByPhoneNumber(data.phoneNumber)
       } else {
-        Toast.fail('get Sessionkey And Openid fail!');
+        Toast.fail('get Sessionkey And Openid fail!')
       }
+    })
+  },
+  async registerAndLoginByPhoneNumber(phoneNumber) {
+    await wx.p.request({
+      method: 'POST',
+      url: app.globalData.api + 'user/register',
+      data: {
+        phoneNumber: phoneNumber,
+        nickName: this.data.userInfo.nickName,
+        avatarUrl: this.data.userInfo.avatarUrl
+      }
+    }).then(res => {
+      if (res.data.success) {
+        this.setUserType(res.data.user.userType)
+        this.setUserInfo(res.data.user)
+      }
+    })
+  },
+  async getAppByPhoneNumber(phoneNumber) {
+    await wx.p.request({
+      method: 'POST',
+      url: app.globalData.api + 'app/getAppByPhoneNumber',
+      data: {
+        phoneNumber: phoneNumber
+      }
+    }).then(res => {
+      this.setData({
+        app: res.data
+      })
+    })
+  },
+  goto(url) {
+    wx.navigateTo({
+      url: url,
     })
   },
   onLoad: function () {
     this.storeBindings = createStoreBindings(this, {
       store,
-      fields: ['userInfo'],
-      actions: ['setUserInfo']
+      fields: ['userInfo','userType'],
+      actions: ['setUserInfo','setUserType']
     })
   },
   onUnload: function () {

@@ -14,6 +14,7 @@
     "backgroundColor": "#efefef"
   },
   "tabBar": {
+    "custom": true,
     "list": [
       {
         "pagePath": "pages/home/home",
@@ -35,7 +36,15 @@
     "v-row": "@vant/weapp/row/index",
     "v-col": "@vant/weapp/col/index",
     "v-img": "@vant/weapp/image/index",
-    "v-toast": "@vant/weapp/toast/index"
+    "v-toast": "@vant/weapp/toast/index",
+    "v-tabbar": "@vant/weapp/tabbar/index",
+    "v-tabbar-item": "@vant/weapp/tabbar-item/index",
+    "van-icon": "@vant/weapp/icon/index",
+    "van-grid": "@vant/weapp/grid/index",
+    "van-grid-item": "@vant/weapp/grid-item/index",
+    "van-goods-action": "@vant/weapp/goods-action/index",
+    "van-goods-action-icon": "@vant/weapp/goods-action-icon/index",
+    "van-goods-action-button": "@vant/weapp/goods-action-button/index"
   },
   "sitemapLocation": "sitemap.json"
 }

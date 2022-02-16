@@ -1,4 +1,5 @@
 // pages/home/home.js
+import Toast from '../../miniprogram_npm/@vant/weapp/toast/toast'
 Page({
 
   /**
@@ -32,6 +33,7 @@ Page({
     })
   },
   add() {
+    Toast.fail('get Sessionkey And Openid fail!')
     this.setData({
       count: ++this.data.count
     })
