@@ -1,15 +1,16 @@
 {
-  "pages":[
+  "pages": [
     "pages/home/home",
     "pages/index/index",
     "pages/order/order",
-    "pages/my/my"
+    "pages/my/my",
+    "pages/myinfo/myinfo"
   ],
-  "window":{
-    "backgroundTextStyle":"dark",
+  "window": {
+    "backgroundTextStyle": "dark",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "咕咕美发店",
-    "navigationBarTextStyle":"black",
+    "navigationBarTextStyle": "black",
     "enablePullDownRefresh": true,
     "backgroundColor": "#efefef"
   },
@@ -44,7 +45,8 @@
     "van-grid-item": "@vant/weapp/grid-item/index",
     "van-goods-action": "@vant/weapp/goods-action/index",
     "van-goods-action-icon": "@vant/weapp/goods-action-icon/index",
-    "van-goods-action-button": "@vant/weapp/goods-action-button/index"
+    "van-goods-action-button": "@vant/weapp/goods-action-button/index",
+    "van-steps": "@vant/weapp/steps/index"
   },
   "sitemapLocation": "sitemap.json"
 }

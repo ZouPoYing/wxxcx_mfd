@@ -1,25 +1,30 @@
 {
-    "setting": {},
-    "condition": {
-        "plugin": {
-            "list": []
+  "setting": {},
+  "condition": {
+    "plugin": {
+      "list": []
+    },
+    "game": {
+      "list": []
+    },
+    "gamePlugin": {
+      "list": []
+    },
+    "miniprogram": {
+      "list": [
+        {
+          "name": "",
+          "pathName": "pages/my/my",
+          "query": "",
+          "scene": null
         },
-        "game": {
-            "list": []
-        },
-        "gamePlugin": {
-            "list": []
-        },
-        "miniprogram": {
-            "list": [
-                {
-                    "name": "",
-                    "pathName": "pages/my/my",
-                    "query": "",
-                    "launchMode": "default",
-                    "scene": null
-                }
-            ]
+        {
+          "name": "",
+          "pathName": "pages/myinfo/myinfo",
+          "query": "title=个人档案",
+          "scene": null
         }
+      ]
     }
+  }
 }

@@ -25,7 +25,7 @@
             <view wx:for="{{app}}" wx:key="index">
                 <van-grid-item 
                 link-type="navigateTo"
-                url="{{item.link}}"
+                url="{{item.link}}?title={{item.title}}"
                 icon="{{item.img}}"
                 text="{{item.title}}"
                 />

@@ -1,0 +1,29 @@
+<van-steps steps="{{ steps }}" active="{{ active }}" />
+<card-view>
+  <view wx:for="{{steps}}" wx:key="index">
+    <view hidden="{{index!=active}}">
+      <text class="text-title">{{item.desc}}</text>
+      <view class="option" wx:for="{{item.options}}" wx:key="index">
+        <view bindtap="change({{active}},{{item.value}},{{index}})">
+          <v-img class="img" round fit="cover" width="50" height="50" src="{{item.img}}"></v-img>
+          <text class="text-opt">{{item.value}}</text>
+        </view>  
+      </view>
+    </view>
+  </view>
+  
+</card-view>
+<view>
+  <v-row gutter="20">
+    <v-col span="6" offset="2">
+      <v-btn type="default" bindtap="prevStep">上一步</v-btn>
+    </v-col>
+    <v-col span="6" offset="2">
+      <v-btn type="default" bindtap="nextStep">下一步</v-btn>
+    </v-col>
+    <v-col span="6" offset="2">
+      <v-btn disabled="{{active!=5}}" type="info">完成</v-btn>
+    </v-col>
+  </v-row>
+</view>
+<v-toast id="van-toast" />
