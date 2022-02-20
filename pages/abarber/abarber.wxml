@@ -1,0 +1,45 @@
+<view>
+    <van-cell-group>
+        <van-cell title="头像" />
+        <van-uploader upload-text="头像" file-list="{{ headFile }}" bind:after-read="uploadHead" bind:delete="deleteHead" max-count="1"/>
+        <van-cell title="背景" />
+        <van-uploader upload-text="背景" file-list="{{ backFile }}" bind:after-read="uploadBack" bind:delete="deleteBack" max-count="1"/>
+        <van-cell title="姓名" />
+        <van-field model:value="{{ barber_name }}" placeholder="请输入姓名" maxlength="20" show-word-limit />
+        <van-cell title="技能" bind:click="showSkill" />
+        <van-popup round position="bottom" show="{{ showSkill }}">
+            <van-picker columns="{{ skillOptions }}" bind:change="skillChange" />
+        </van-popup>
+        <van-field model:value="{{ skill }}" placeholder="请选择技能" readonly="true" />
+        <van-cell title="上班时间" bind:click="showStarTime"/>
+        <van-popup round position="bottom" show="{{ showStarTime }}">
+            <van-datetime-picker type="time" value="{{ currentDate }}" bind:cancel="showStarTime" bind:confirm="confirmS" />
+        </van-popup>
+        <van-field model:value="{{ star_time }}" placeholder="请选择上班时间" readonly="true"/>
+        <van-cell title="下班时间"  bind:click="showEndTime"/>
+        <van-popup round position="bottom" show="{{ showEndTime }}">
+            <van-datetime-picker type="time" value="{{ currentDate }}" bind:cancel="showEndTime" bind:confirm="confirmE" />
+        </van-popup>
+        <van-field model:value="{{ end_time }}" placeholder="请选择下班时间" readonly="true"/>
+        <van-cell title="是否在职" bind:click="showIsWork" />
+        <van-popup round position="bottom" show="{{ showIsWork }}">
+            <van-picker columns="{{ isWorkOptions }}" bind:change="isWorkChange" />
+        </van-popup>
+        <van-field model:value="{{ is_work }}" placeholder="请选择是否在职" readonly="true" />
+        <van-cell title="职位" bind:click="showPosition" />
+        <van-popup round position="bottom" show="{{ showPosition }}">
+            <van-picker columns="{{ positionOptions }}" bind:change="positionChange" />
+        </van-popup>
+        <van-field model:value="{{ position }}" placeholder="请选择职位" readonly="true" />
+        <van-cell title="描述" />
+        <van-field model:value="{{ describe }}" placeholder="请描述一下手艺" type="textarea" autosize maxlength="200" show-word-limit />
+    </van-cell-group>
+    <view class="view-btn">
+        <v-row gutter="20">
+            <v-col span="6" offset="2">
+                <v-btn type="info" bindtap="addBarber">{{isMod ? '修改' : '新增'}}</v-btn>
+            </v-col>
+        </v-row>
+    </view>
+</view>
+<v-toast id="van-toast" />

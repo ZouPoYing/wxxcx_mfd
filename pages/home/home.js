@@ -1,117 +1,116 @@
-// pages/home/home.js
+import { createStoreBindings } from "mobx-miniprogram-bindings"
+import { store } from "../../store/store"
 import Toast from '../../miniprogram_npm/@vant/weapp/toast/toast'
+
+var app = getApp()
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    message: 'hello world',
-    movies: [
-      {name:"queen",song:"bo-rep"},
-      {name:"zeb",song:"strain"},
-      {name:"bob",song:"anyway"}
-    ],
-    count: 0,
-    msg: '',
-    userInfo: {},
-    hasUserInfo: false,
-    canIUseGetUserProfile: false
+    products: [],
+    updateLoading: false,
+    isAllLoaded: false,
+    swiperList: [],
+    notice: '',
+    updatedCount: 1,
+    updateNum: 10
   },
-  houduanButton1() {
-    wx.request({
-      url: 'http://localhost:8080/api/hs/test',
-      method: 'GET',
-      header: {
-        'content-type': 'application/json' // 默认值
-      },
-      success: (res) => {
+  initPage() {
+    this.getSwiper()
+    this.getNotice()
+    this.getEvaluate()
+  },
+  handleScrollLower() {
+    if(this.data.updateLoading || this.data.isAllLoaded) return;
+    this.getEvaluate();
+  },
+  async getSwiper() {
+    await wx.p.request({
+        method: 'POST',
+        url: app.globalData.api + 'app/getSwiper'
+    }).then(res => {
         this.setData({
-          msg : res.data
+            swiperList: res.data
         })
-      }
     })
   },
-  add() {
-    Toast.fail('get Sessionkey And Openid fail!')
-    this.setData({
-      count: ++this.data.count
-    })
-  },
-  de() {
-    this.setData({
-      count: --this.data.count
-    })
-  },
-  getUserProfile(e) {
-    console.log(e);
-    wx.getUserProfile({
-      desc: '用于完善会员资料', 
-      success: (res) => {
+  async getNotice() {
+    await wx.p.request({
+        method: 'POST',
+        url: app.globalData.api + 'app/getNotice'
+    }).then(res => {
         this.setData({
-          userInfo: res.userInfo,
-          hasUserInfo: true
+            notice: res.data.title
         })
-      }
     })
+  },
+  async getEvaluate() {
+    this.setData({
+      updateLoading: true,
+    })
+    await wx.p.request({
+        method: 'POST',
+        url: app.globalData.api + 'evaluate/getEvaluate',
+        data: {
+          offset: this.data.updatedCount * this.data.updateNum - this.data.updateNum,
+          rows: this.data.updateNum
+        }
+    }).then(res => {
+        var isAllLoaded = false
+        if (res.data.length < this.data.updateNum) {
+          isAllLoaded = true
+        }
+        this.setData({
+          isAllLoaded: isAllLoaded,
+          updateLoading:  false,
+          products: this.data.products.concat(res.data)
+        })
+        this.data.updatedCount += 1;
+    })
+},
+  gotoUrl(url) {
+    wx.navigateTo({
+        url: url,
+      })
+  },
+  goto(e) {
+      var url = e.currentTarget.dataset.url
+      wx.navigateTo({
+        url: url,
+      })
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    if (wx.getUserProfile) {
-      this.setData({
-        canIUseGetUserProfile: true
-      })
-    }
+    this.storeBindings = createStoreBindings(this, {
+      store,
+      fields: ['userInfo', 'userType'],
+      actions: ['setUserInfo', 'setUserType']
+    })
   },
-
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    this.initPage()
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
   onUnload: function () {
-
+    this.storeBindings.destroyStoreBindings()
   },
-
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    this.dataset({
+      products: []
+    })
+    this.initPage()
   },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
   onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+    this.handleScrollLower()
   }
 })

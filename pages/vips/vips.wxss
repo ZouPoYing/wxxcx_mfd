@@ -1,0 +1,32 @@
+.van-swipe-cell__left,
+.van-swipe-cell__right {
+  display: inline-block;
+  width: 65px;
+  height: 44px;
+  font-size: 15px;
+  line-height: 44px;
+  color: #fff;
+  text-align: center;
+  background-color: #1986fa;
+}
+
+.text-use {
+  width:60px;
+  height:60px;
+  text-align:center;
+  display: table-cell;
+  vertical-align:middle
+}
+
+.userinfo-nickname {
+  margin-left: 20rpx;
+  font-weight: 700;
+}
+
+.userinfo-usertype {
+  margin-left: 20rpx;
+}
+
+.userinfo-phoneNumber {
+  margin-left: 20rpx;
+}

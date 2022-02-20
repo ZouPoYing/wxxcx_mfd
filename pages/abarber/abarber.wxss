@@ -1,0 +1,4 @@
+/* pages/abarber/abarber.wxss */
+.view-btn {
+    margin: 20px 0 20px 0;
+}

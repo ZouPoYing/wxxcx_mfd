@@ -1,0 +1,3 @@
+<view class="cell-view">
+    <slot></slot>
+</view>

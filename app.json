@@ -1,52 +1,96 @@
 {
-  "pages": [
-    "pages/home/home",
-    "pages/index/index",
-    "pages/order/order",
-    "pages/my/my",
-    "pages/myinfo/myinfo"
-  ],
-  "window": {
-    "backgroundTextStyle": "dark",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "咕咕美发店",
-    "navigationBarTextStyle": "black",
-    "enablePullDownRefresh": true,
-    "backgroundColor": "#efefef"
-  },
-  "tabBar": {
-    "custom": true,
-    "list": [
-      {
-        "pagePath": "pages/home/home",
-        "text": "home",
-        "iconPath": "/images/tabbar/home.png",
-        "selectedIconPath": "/images/tabbar/home-active.png"
-      },
-      {
-        "pagePath": "pages/my/my",
-        "text": "my",
-        "iconPath": "/images/tabbar/my.png",
-        "selectedIconPath": "/images/tabbar/my-active.png"
-      }
-    ]
-  },
-  "usingComponents": {
-    "card-view": "/components/card-view/card-view",
-    "v-btn": "@vant/weapp/button/index",
-    "v-row": "@vant/weapp/row/index",
-    "v-col": "@vant/weapp/col/index",
-    "v-img": "@vant/weapp/image/index",
-    "v-toast": "@vant/weapp/toast/index",
-    "v-tabbar": "@vant/weapp/tabbar/index",
-    "v-tabbar-item": "@vant/weapp/tabbar-item/index",
-    "van-icon": "@vant/weapp/icon/index",
-    "van-grid": "@vant/weapp/grid/index",
-    "van-grid-item": "@vant/weapp/grid-item/index",
-    "van-goods-action": "@vant/weapp/goods-action/index",
-    "van-goods-action-icon": "@vant/weapp/goods-action-icon/index",
-    "van-goods-action-button": "@vant/weapp/goods-action-button/index",
-    "van-steps": "@vant/weapp/steps/index"
-  },
-  "sitemapLocation": "sitemap.json"
+    "pages": [
+        "pages/home/home",
+        "pages/index/index",
+        "pages/haircut/haircut",
+        "pages/order/order",
+        "pages/my/my",
+        "pages/myinfo/myinfo",
+        "pages/setting/setting",
+        "pages/vips/vips",
+        "pages/vip/vip",
+        "pages/mbarbers/mbarbers",
+        "pages/barber/barber",
+        "pages/abarber/abarber",
+        "pages/map/map",
+        "pages/evaluate/evaluate"
+    ],
+    "permission": {
+        "scope.userLocation": {
+            "desc": "你的位置信息将用于小程序位置接口的效果展示"
+        }
+    },
+    "window": {
+        "backgroundTextStyle": "dark",
+        "navigationBarBackgroundColor": "#fff",
+        "navigationBarTitleText": "咕咕美发店",
+        "navigationBarTextStyle": "black",
+        "enablePullDownRefresh": false,
+        "backgroundColor": "#efefef"
+    },
+    "tabBar": {
+        "custom": true,
+        "list": [
+            {
+                "pagePath": "pages/home/home",
+                "text": "首页",
+                "iconPath": "/images/tabbar/home.png",
+                "selectedIconPath": "/images/tabbar/home-active.png"
+            },
+            {
+                "pagePath": "pages/haircut/haircut",
+                "text": "剪发",
+                "iconPath": "/images/tabbar/home.png",
+                "selectedIconPath": "/images/tabbar/home-active.png"
+            },
+            {
+                "pagePath": "pages/order/order",
+                "text": "订单",
+                "iconPath": "/images/tabbar/home.png",
+                "selectedIconPath": "/images/tabbar/home-active.png"
+            },
+            {
+                "pagePath": "pages/my/my",
+                "text": "我的",
+                "iconPath": "/images/tabbar/my.png",
+                "selectedIconPath": "/images/tabbar/my-active.png"
+            }
+        ]
+    },
+    "usingComponents": {
+        "card-view": "/components/card-view/card-view",
+        "cell-view": "/components/cell-view/cell-view",
+        "v-btn": "@vant/weapp/button/index",
+        "v-row": "@vant/weapp/row/index",
+        "v-col": "@vant/weapp/col/index",
+        "v-img": "@vant/weapp/image/index",
+        "v-toast": "@vant/weapp/toast/index",
+        "v-tabbar": "@vant/weapp/tabbar/index",
+        "v-tabbar-item": "@vant/weapp/tabbar-item/index",
+        "van-icon": "@vant/weapp/icon/index",
+        "van-grid": "@vant/weapp/grid/index",
+        "van-grid-item": "@vant/weapp/grid-item/index",
+        "van-goods-action": "@vant/weapp/goods-action/index",
+        "van-goods-action-icon": "@vant/weapp/goods-action-icon/index",
+        "van-goods-action-button": "@vant/weapp/goods-action-button/index",
+        "van-steps": "@vant/weapp/steps/index",
+        "van-swipe-cell": "@vant/weapp/swipe-cell/index",
+        "van-cell": "@vant/weapp/cell/index",
+        "van-cell-group": "@vant/weapp/cell-group/index",
+        "van-uploader": "@vant/weapp/uploader/index",
+        "van-field": "@vant/weapp/field/index",
+        "van-picker": "@vant/weapp/picker/index",
+        "van-popup": "@vant/weapp/popup/index",
+        "van-datetime-picker": "@vant/weapp/datetime-picker/index",
+        "van-dialog": "@vant/weapp/dialog/index",
+        "van-nav-bar": "@vant/weapp/nav-bar/index",
+        "van-card": "@vant/weapp/card/index",
+        "van-dropdown-menu": "@vant/weapp/dropdown-menu/index",
+        "van-dropdown-item": "@vant/weapp/dropdown-item/index",
+        "van-tab": "@vant/weapp/tab/index",
+        "van-tabs": "@vant/weapp/tabs/index",
+        "van-rate": "@vant/weapp/rate/index",
+        "van-notice-bar": "@vant/weapp/notice-bar/index"
+    },
+    "sitemapLocation": "sitemap.json"
 }

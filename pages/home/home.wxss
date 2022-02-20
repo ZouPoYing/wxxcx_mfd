@@ -1,1 +1,28 @@
-/* pages/home/home.wxss */
+swiper {
+    height: 450rpx;
+}
+
+.masonry {
+    margin: 10px auto;
+    width: 100%;
+    column-count: 2;
+    column-width: 5%;
+    column-gap: 0px;
+}
+
+.img-container {
+    border-radius: 40rpx;
+    box-shadow: 0 16rpx 24rpx #ebedf0;
+    margin: 10rpx;
+    padding: 20rpx;
+    border: 5rpx black;
+    break-inside: avoid;
+} 
+
+.image-class {
+    border-radius: 24rpx !important;
+}
+
+.text-message {
+    font-size: 12px;
+}

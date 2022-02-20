@@ -1,0 +1,12 @@
+.userinfo-nickname {
+    margin-left: 20rpx;
+    font-weight: 700;
+  }
+  
+  .userinfo-usertype {
+    margin-left: 20rpx;
+  }
+  
+  .userinfo-phoneNumber {
+    margin-left: 20rpx;
+  }

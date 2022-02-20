@@ -1,0 +1,6 @@
+.cell-view {
+    margin-top: 5rpx;
+    margin-bottom: 5rpx;
+    padding: 48rpx;
+    border: 1rpx solid rgb(240, 234, 234); 
+}

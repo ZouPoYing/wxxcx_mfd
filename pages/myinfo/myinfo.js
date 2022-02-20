@@ -1,6 +1,9 @@
-import Toast from '../../miniprogram_npm/@vant/weapp/toast/toast'
+import { Toast } from '../../miniprogram_npm/@vant/weapp/toast/toast'
+import { createStoreBindings } from "mobx-miniprogram-bindings"
+import { store } from "../../store/store"
 
-// pages/myinfo/myinfo.js
+var app = getApp();
+
 Page({
 
   /**
@@ -8,6 +11,7 @@ Page({
    */
   data: {
     query: {},
+    info: ['男','≥70后','短发','椭圆形','程序员','高中及以下'],
     active: 0,
     steps: [
       {
@@ -152,11 +156,6 @@ Page({
       }
     ],
   },
-  change: function (active,item,index) {
-    console.log(active)
-    console.log(item)
-    console.log(index)
-  },
   nextStep: function () {
     if (this.data.active == 5) {
       Toast('已经是最后一步了!')
@@ -175,11 +174,77 @@ Page({
       })
     }
   },
-  
+  initInfoAndSteps: function (data) {
+    var info = data.info.split(',')
+    var steps = this.data.steps
+    info.forEach(function(item,index,arr) {
+      steps[index].options.forEach(function(i,idx,a) {
+        a[idx].img = a[idx].img.replace('-active','')
+        if (a[idx].value == info[index]) {
+          a[idx].img = a[idx].img.replace('.png','-active.png')
+        }
+      })
+    })
+    this.setData({
+      info: info,
+      steps: steps
+    })
+  },
+  change: function (e) {
+    var info = this.data.info
+    var steps = this.data.steps
+    var active = e.currentTarget.dataset.active
+    var options = this.data.steps[active].options
+    info.splice(active, 1, e.currentTarget.dataset.item)
+    options.forEach(function (item, index , arr) {
+      arr[index].img = arr[index].img.replace('-active','')
+    });
+    options[e.currentTarget.dataset.index].img = options[e.currentTarget.dataset.index].img.replace('.png','-active.png')
+    steps[active].options = options
+    this.setData({
+      info : info,
+      steps : steps
+    })
+  },
+  async updateMyinfoByPhoneNumber() {
+    await wx.p.request({
+      method: 'POST',
+      url: app.globalData.api + 'user/updateMyinfoByPhoneNumber',
+      data: {
+        phoneNumber: this.data.userInfo.phoneNumber,
+        info: this.data.info.toString()
+      }
+    }).then(res => {
+      if (res.data.success) {
+        this.gotoTab('../../pages/my/my')
+      }
+    })
+  },
+  async getMyinfoByPhoneNumber() {
+    await wx.p.request({
+      method: 'POST',
+      url: app.globalData.api + 'user/getMyinfoByPhoneNumber',
+      data: {
+        phoneNumber: this.data.userInfo.phoneNumber
+      }
+    }).then(res => {
+      this.initInfoAndSteps(res.data)
+    })
+  },
+  gotoTab(url) {
+    wx.switchTab({
+      url: url,
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.storeBindings = createStoreBindings(this, {
+      store,
+      fields: ['userInfo','userType'],
+      actions: ['setUserInfo','setUserType']
+    })
     this.setData({
       query: options
     })
@@ -192,5 +257,9 @@ Page({
     wx.setNavigationBarTitle({
       title: this.data.query.title,
     })
+    this.getMyinfoByPhoneNumber()
+  },
+  onUnload: function () {
+    this.storeBindings.destroyStoreBindings()
   }
 })

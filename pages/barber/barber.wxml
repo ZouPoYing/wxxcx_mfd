@@ -1,0 +1,32 @@
+<view>
+    <view class="back">
+        <v-img width="100%" height="50" fit="widthFix" src="{{info.barber_back}}" />
+    </view>
+    <card-view>
+        <van-cell-group>
+            <v-row>
+                <v-col span="4">
+                    <v-img round width="50" height="50" fit="widthFix" src="{{info.barber_head}}" />
+                </v-col>
+                <v-col span="20">
+                    <view>
+                        <text class="userinfo-nickname">{{info.barber_name}}</text>
+                    </view>
+                    <view>
+                        <text class="userinfo-usertype">{{info.position}}</text>
+                    </view>
+                    <view>
+                        <text class="userinfo-phoneNumber">{{info.skill}}</text>
+                    </view>
+                </v-col>
+            </v-row>
+        </van-cell-group>
+    </card-view>
+    <van-cell-group>
+        <van-cell title="工作经验" value="{{info.year}}年" />
+        <van-cell title="上班时间" value="{{info.star_time}}" />
+        <van-cell title="下班时间" value="{{info.end_time}}" />
+        <van-cell title="是否在职" value="{{info.is_work}}" />
+        <van-cell title="简介" label="{{info.describe}}" />
+    </van-cell-group>
+</view>

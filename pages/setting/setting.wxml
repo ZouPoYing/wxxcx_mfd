@@ -1,0 +1,41 @@
+<card-view>
+    <text>底部导航栏--常规</text>
+    <van-swipe-cell async-close right-width="{{ 65 }}">
+        <van-cell-group>
+            <v-img width="100%" fit="widthFix" src="/images/setting/common.png" />
+        </van-cell-group>
+        <view class="text-use" bindtap="setCommon" slot="right">使用</view>
+    </van-swipe-cell>
+</card-view>
+<card-view>
+    <text>底部导航栏--新年</text>
+    <van-swipe-cell async-close right-width="{{ 65 }}">
+        <van-cell-group>
+            <v-img width="100%" fit="widthFix" src="/images/setting/newYear.png" />
+        </van-cell-group>
+        <view class="text-use" bindtap="setNewYear" slot="right">使用</view>
+    </van-swipe-cell>
+</card-view>
+<card-view>
+    <text>价格配置--基础收费</text>
+    <van-cell-group>
+        <van-field label="洗剪吹" type="number" model:value="{{ skillPrice1 }}" placeholder="请输入价格" border="{{ false }}" readonly="{{skillReadonly}}"/>
+        <van-field label="烫发" type="number" model:value="{{ skillPrice2 }}" placeholder="请输入价格" border="{{ false }}" readonly="{{skillReadonly}}"/>
+        <van-field label="染发" type="number" model:value="{{ skillPrice3 }}" placeholder="请输入价格" border="{{ false }}" readonly="{{skillReadonly}}"/>
+        <van-field label="发型设计" type="number" model:value="{{ skillPrice4 }}" placeholder="请输入价格" border="{{ false }}" readonly="{{skillReadonly}}"/>
+        <v-btn wx:if="{{skillReadonly}}" type="info" bindtap="editSkillPrice">编辑</v-btn>
+        <v-btn wx:else type="info" bindtap="setSkillPrice">确定</v-btn>
+    </van-cell-group>
+</card-view>
+<card-view>
+    <text>价格配置--手艺收费</text>
+    <van-cell-group>
+        <van-field label="初级理发师" type="number" model:value="{{ positionPrice1 }}" placeholder="请输入价格" border="{{ false }}" readonly="{{positionReadonly}}"/>
+        <van-field label="中级理发师" type="number" model:value="{{ positionPrice2 }}" placeholder="请输入价格" border="{{ false }}" readonly="{{positionReadonly}}"/>
+        <van-field label="高级理发师" type="number" model:value="{{ positionPrice3 }}" placeholder="请输入价格" border="{{ false }}" readonly="{{positionReadonly}}"/>
+        <van-field label="总监" type="number" model:value="{{ positionPrice4 }}" placeholder="请输入价格" border="{{ false }}" readonly="{{positionReadonly}}"/>
+        <v-btn wx:if="{{positionReadonly}}" type="info" bindtap="editPositionPrice">编辑</v-btn>
+        <v-btn wx:else type="info" bindtap="setPositionPrice">确定</v-btn>
+    </van-cell-group>
+</card-view>
+<v-toast id="van-toast" />

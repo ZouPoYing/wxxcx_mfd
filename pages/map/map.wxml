@@ -1,0 +1,1 @@
+<map show-compass show-scale enable-building include-points="{{points}}" id="myMap" style="width: 100%; height: 400px;" markers="{{markers}}" show-location></map>

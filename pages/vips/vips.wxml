@@ -1,0 +1,26 @@
+<view>
+    <cell-view wx:for="{{info}}" wx:key="index">
+        <van-swipe-cell async-close right-width="{{ 65 }}">
+            <van-cell-group>
+                <v-row>
+                    <v-col span="4">
+                        <v-img round width="50" height="50" fit="widthFix" src="{{item.avatarUrl}}" />
+                    </v-col>
+                    <v-col span="20">
+                        <view>
+                            <text class="userinfo-nickname">{{item.nickName}}</text>
+                        </view>
+                        <view>
+                            <text class="userinfo-usertype">{{item.userType}}</text>
+                        </view>
+                        <view>
+                            <text class="userinfo-phoneNumber">{{item.phoneNumber}}</text>
+                        </view>
+                    </v-col>
+                </v-row>
+            </van-cell-group>
+            <view class="text-use" bindtap="goto" slot="right" data-url="/pages/vip/vip?title={{item.nickName}}&userId={{item.userId}}">详情</view>
+        </van-swipe-cell>
+    </cell-view>
+</view>
+<v-toast id="van-toast" />

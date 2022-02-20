@@ -1,0 +1,19 @@
+.back {
+    width: 100%;
+    height: 250px;
+    background-color: rosybrown;
+    margin-bottom: 120px;
+}
+
+.userinfo-nickname {
+    margin-left: 20rpx;
+    font-weight: 700;
+  }
+  
+  .userinfo-usertype {
+    margin-left: 20rpx;
+  }
+  
+  .userinfo-phoneNumber {
+    margin-left: 20rpx;
+  }

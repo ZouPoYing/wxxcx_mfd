@@ -1,0 +1,23 @@
+<view>
+    <view class="view-barber">
+        <v-row gutter="20">
+            <v-col span="6" offset="2">
+                <v-img round width="50" height="50" fit="contain" src="{{info.barber_head}}"></v-img>
+            </v-col>
+            <v-col span="16">
+                <text class="name">{{info.barber_name}}</text>
+                <text class="position">{{info.position}}</text>
+            </v-col>
+        </v-row>
+    </view>
+    <view class="view-star">
+        <van-rate value="{{ value }}" bind:change="onChange" />
+        <text style="margin-left: 10px;">{{value}}星</text>
+    </view>
+    <van-field model:value="{{ message }}" placeholder="请描述一下手艺" type="textarea" autosize maxlength="200" show-word-limit />
+    <van-uploader upload-text="添加照片" file-list="{{ imgFile }}" bind:after-read="uploadImg" bind:delete="deleteImg" max-count="1" />
+    <view class="view-evaluate">
+        <v-btn round type="info" bind:click="evaluate">发布评价</v-btn>
+    </view>
+</view>
+<v-toast id="van-toast" />

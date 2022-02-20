@@ -1,0 +1,30 @@
+<view>
+    <card-view>
+        <van-cell-group>
+            <v-row>
+                <v-col span="4">
+                    <v-img round width="50" height="50" fit="widthFix" src="{{info.avatarUrl}}" />
+                </v-col>
+                <v-col span="20">
+                    <view>
+                        <text class="userinfo-nickname">{{info.nickName}}</text>
+                    </view>
+                    <view>
+                        <text class="userinfo-usertype">{{info.userType}}</text>
+                    </view>
+                    <view>
+                        <text class="userinfo-phoneNumber">{{info.phoneNumber}}</text>
+                    </view>
+                </v-col>
+            </v-row>
+        </van-cell-group>
+    </card-view>
+    <van-cell-group>
+        <van-cell title="性别" value="{{info.sex}}" />
+        <van-cell title="年代" value="{{info.year}}" />
+        <van-cell title="发长" value="{{info.hair}}" />
+        <van-cell title="脸型" value="{{info.face}}" />
+        <van-cell title="职业" value="{{info.job}}" />
+        <van-cell title="学历" value="{{info.education}}" />
+    </van-cell-group>
+</view>

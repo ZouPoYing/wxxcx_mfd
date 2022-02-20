@@ -1,0 +1,35 @@
+<view>
+    <view class="view-btn">
+        <v-row gutter="20">
+            <v-col span="6" offset="2">
+                <v-btn type="info" bindtap="goto" data-url="/pages/abarber/abarber?title=新增理发师">新增</v-btn>
+            </v-col>
+        </v-row>
+    </view>
+    <cell-view wx:for="{{info}}" wx:key="index">
+        <van-swipe-cell async-close bind:close="onClose" data-barber_id="{{item.barber_id}}" right-width="{{ 65 }}" left-width="{{ 65 }}" data-url="/pages/barber/barber?title={{item.barber_name}}&barber_id={{item.barber_id}}">
+            <view class="text-use" slot="left" >删除</view>
+            <van-cell-group bindtap="goto" data-url="/pages/barber/barber?title={{item.barber_name}}&barber_id={{item.barber_id}}">
+                <v-row>
+                    <v-col span="4">
+                        <v-img round width="50" height="50" fit="widthFix" src="{{item.barber_head}}" />
+                    </v-col>
+                    <v-col span="20">
+                        <view>
+                            <text class="userinfo-nickname">{{item.barber_name}}</text>
+                        </view>
+                        <view>
+                            <text class="userinfo-usertype">{{item.position}}</text>
+                        </view>
+                        <view>
+                            <text class="userinfo-phoneNumber">{{item.skill}}</text>
+                        </view>
+                    </v-col>
+                </v-row>
+            </van-cell-group>
+            <view class="text-use" slot="right">编辑</view>
+        </van-swipe-cell>
+    </cell-view>
+</view>
+<v-toast id="van-toast" />
+<van-dialog id="van-dialog" />

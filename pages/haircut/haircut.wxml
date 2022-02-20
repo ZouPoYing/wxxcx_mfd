@@ -1,0 +1,23 @@
+<view>
+    <swiper indicator-dots circular autoplay>
+        <swiper-item wx:for="{{swiperList}}" wx:key="index">
+            <v-img width="100%" fit="widthFix" src="{{item.img}}" bind:click="goto" data-url="{{item.link}}" />
+        </swiper-item>
+    </swiper>
+    <van-nav-bar title="不知道小店在哪？打开地图吧！" bind:click-right="onClickRight">
+        <van-icon size="30" name="location" slot="right" />
+    </van-nav-bar>
+    <van-dropdown-menu>
+        <van-dropdown-item value="{{ value }}" options="{{ option }}" bind:change="skillChange" />
+    </van-dropdown-menu>
+    <card-view wx:for="{{info}}" wx:key="index">
+        <van-card title-class="title-class" price-class="price-class" desc-class="desc-class" thumb-class="thumb-class" num="{{item.line}}人排队" tag="{{item.year}}年" thumb-link="/pages/barber/barber?title={{item.barber_name}}&barber_id={{item.barber_id}}" price="{{item.price}}" desc="{{item.position}}" title="{{item.barber_name}}" thumb="{{item.barber_head}}">
+            <view class="time-left" slot="tags">上班：{{item.star_time}}</view>
+            <view class="time-right" slot="tags">下班：{{item.end_time}}</view>
+            <view slot="footer">
+                <v-btn class="btn-line" size="small" bind:click="line" data-barberid="{{item.barber_id}}" data-price="{{item.price}}" data-ordertype="{{item.skill}}">排队</v-btn>
+            </view>
+        </van-card>
+    </card-view>
+</view>
+<v-toast id="van-toast" />

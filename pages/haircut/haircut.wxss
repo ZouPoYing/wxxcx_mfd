@@ -1,0 +1,31 @@
+swiper {
+    height: 400rpx;
+}
+
+.thumb-class {
+    border-radius: 100% !important;
+}
+
+.time-left, .time-right {
+    font-size: 9px !important;
+}
+
+.desc-class {
+    margin: 2px 0 2px 0 !important;
+}
+
+.title-class {
+    font-size: 20px !important;
+}
+
+.price-class {
+    font-size: 10px !important;
+}
+
+.van-button--small {
+    background-color: rgb(216, 41, 41) !important;
+}
+
+.van-button__text {
+    color: white !important;
+}

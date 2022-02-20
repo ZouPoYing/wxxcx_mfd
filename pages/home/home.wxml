@@ -1,11 +1,15 @@
-<!--pages/home/home.wxml-->
-<view>{{message}}</view>
-<view wx:for="{{movies}}" wx:key="index">{{item.name}}</view>
-<view>count：{{count}}</view>
-<button size="mini" bind:tap="add">+</button>
-<button size="mini" bind:tap="de">-</button>
-<button bindtap='houduanButton1'>点击发起请求</button>
-<view>请求的数据：{{msg}}</view>
-<card-view></card-view>
-<card-view></card-view>
+<view>
+    <swiper indicator-dots circular autoplay>
+        <swiper-item wx:for="{{swiperList}}" wx:key="index">
+            <v-img width="100%" fit="widthFix" src="{{item.img}}" />
+        </swiper-item>
+    </swiper>
+    <van-notice-bar left-icon="volume-o" text="{{notice}}" />
+    <view class="masonry">
+        <view class="img-container" wx:for="{{products}}" wx:key="index">
+            <v-img image-class="image-class" width="100%" fit="widthFix" src="{{item.img}}" />
+            <text class="text-message">{{item.message}}</text>
+        </view>
+    </view>
+</view>
 <v-toast id="van-toast" />
