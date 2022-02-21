@@ -55,8 +55,8 @@ Page({
         method: 'POST',
         url: app.globalData.api + 'evaluate/getEvaluate',
         data: {
-          offset: this.data.updatedCount * this.data.updateNum - this.data.updateNum,
-          rows: this.data.updateNum
+          // offset: this.data.updatedCount * this.data.updateNum - this.data.updateNum,
+          // rows: this.data.updateNum
         }
     }).then(res => {
         var isAllLoaded = false
@@ -66,7 +66,7 @@ Page({
         this.setData({
           isAllLoaded: isAllLoaded,
           updateLoading:  false,
-          products: this.data.products.concat(res.data)
+          products: res.data//this.data.products.concat(res.data)
         })
         this.data.updatedCount += 1;
     })
@@ -111,6 +111,6 @@ Page({
     this.initPage()
   },
   onReachBottom: function () {
-    this.handleScrollLower()
+    // this.handleScrollLower()
   }
 })

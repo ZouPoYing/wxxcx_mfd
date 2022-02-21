@@ -5,10 +5,31 @@
         </swiper-item>
     </swiper>
     <van-notice-bar left-icon="volume-o" text="{{notice}}" />
-    <view class="masonry">
-        <view class="img-container" wx:for="{{products}}" wx:key="index">
+    <!-- <waterFallView id='waterFallView' wx:for="{{products}}" wx:key="index">
+        <view>
             <v-img image-class="image-class" width="100%" fit="widthFix" src="{{item.img}}" />
             <text class="text-message">{{item.message}}</text>
+        </view>
+    </waterFallView> -->
+    <view class="masonry">
+        <view class="img-container" wx:for="{{products}}" wx:key="index">
+            <view bindtap="goto" data-url="/pages/evaluateDetail/evaluateDetail?title=评价详情&evaluateId={{item.evaluate_id}}">
+                <v-img image-class="image-class" width="100%" fit="widthFix" src="{{item.img}}" />
+                <view class="view-message">
+                    <text class="text-message">{{item.message}}</text>
+                </view>
+                <v-row>
+                    <v-col span="4" class="view-head">
+                        <v-img round width="20" height="20" fit="widthFix" src="{{item.barber_head}}" />
+                    </v-col>
+                    <v-col span="16" class="view-name">
+                        <text class="userinfo-nickname">{{item.barber_name}}</text>
+                    </v-col>
+                    <v-col span="4" class="view-level">
+                        <text class="level">{{item.level}}星</text>
+                    </v-col>
+                </v-row>
+            </view>
         </view>
     </view>
 </view>

@@ -1,0 +1,17 @@
+<view>
+    <v-img image-class="image-class" width="100%" fit="widthFix" src="{{info.img}}" />
+    <view class="view-message">
+        <text class="text-message">{{info.message}}</text>
+    </view>
+    <v-row>
+        <v-col span="4" class="view-head">
+            <v-img round width="20" height="20" fit="widthFix" src="{{info.barber_head}}" />
+        </v-col>
+        <v-col span="16" class="view-name">
+            <text class="userinfo-nickname">{{info.barber_name}}</text>
+        </v-col>
+        <v-col span="4" class="view-level">
+            <text class="level">{{info.level}}星</text>
+        </v-col>
+    </v-row>
+</view>

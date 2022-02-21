@@ -13,7 +13,8 @@
         "pages/barber/barber",
         "pages/abarber/abarber",
         "pages/map/map",
-        "pages/evaluate/evaluate"
+        "pages/evaluate/evaluate",
+        "pages/evaluateDetail/evaluateDetail"
     ],
     "permission": {
         "scope.userLocation": {

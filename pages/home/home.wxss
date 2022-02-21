@@ -26,3 +26,11 @@ swiper {
 .text-message {
     font-size: 12px;
 }
+
+.view-message {
+    margin: 10px 0 10px 0;
+}
+
+.userinfo-nickname {
+    font-size: 10px;
+}
