@@ -51,8 +51,8 @@
                     "name": "",
                     "pathName": "pages/evaluate/evaluate",
                     "query": "title=评价&order_id=6",
-                    "scene": null,
-                    "launchMode": "default"
+                    "launchMode": "default",
+                    "scene": null
                 }
             ]
         }

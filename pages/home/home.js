@@ -112,5 +112,6 @@ Page({
   },
   onReachBottom: function () {
     // this.handleScrollLower()
+    this.initPage()
   }
 })

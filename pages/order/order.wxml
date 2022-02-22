@@ -92,6 +92,9 @@
                         <text class="name">{{item.barber_name}}</text>
                         <text class="position">{{item.position}}</text>
                     </v-col>
+                    <v-col span="6">
+                        <v-btn class="btn-line" size="small" bind:click="goto" data-url="/pages/evaluateDetail/evaluateDetail?title=评价详情&evaluateId={{item.evaluate_id}}" data-orderid="{{item.order_id}}">查看评价</v-btn>
+                    </v-col>
                 </v-row>
                 <van-cell-group>
                     <van-cell title="服务项目" value="{{item.order_type}}" />

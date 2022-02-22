@@ -1,6 +1,7 @@
 <view>
     <cell-view wx:for="{{info}}" wx:key="index">
-        <van-swipe-cell async-close right-width="{{ 65 }}">
+        <van-swipe-cell async-close right-width="{{ 65 }}" left-width="{{ 65 }}">
+            <view class="text-use" bindtap="showPopup" slot="left" data-userid="{{item.userId}}">充值</view>
             <van-cell-group>
                 <v-row>
                     <v-col span="4">
@@ -23,4 +24,16 @@
         </van-swipe-cell>
     </cell-view>
 </view>
+<van-popup show="{{ show }}" z-index="10000" position="bottom" closeable close-icon-position="top-left" custom-style="height: 40%;" bind:close="onClose">
+    <view style="margin-top: 20px;"></view>
+    <view class="pop">
+        <van-cell-group>
+            <van-cell title="充值" />
+            <van-field value="{{ money }}" size="large" input-align="center" bind:change="onChange" border="true" type="number" label="￥" placeholder="请输入充值的金额" input-align="right" />
+        </van-cell-group>
+        <view class="view-btn">
+            <v-btn class="btn-pay" block size="large" type="info" bind:click="recharge">确认充值</v-btn>
+        </view>
+    </view>
+</van-popup>
 <v-toast id="van-toast" />

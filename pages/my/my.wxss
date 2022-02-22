@@ -10,6 +10,7 @@
     font-weight: 700;
 }
 
+.money,
 .userinfo-usertype {
     margin-left: 20rpx;
 }

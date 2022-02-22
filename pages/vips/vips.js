@@ -9,12 +9,52 @@ Page({
      */
     data: {
         query: {},
-        info: []
+        info: [],
+        show: false,
+        money: 0,
+        userId: ''
     },
     initPage: function (data) {
         var info = data
         this.setData({
           info: info
+        })
+    },
+    onChange(event) {
+        this.setData({
+            money: event.detail
+        })
+    },
+    onClose() {
+        this.setData({
+            show: false
+        })
+    },
+    showPopup(event) {
+        this.setData({
+            show: true,
+            userId: event.currentTarget.dataset.userid
+        })
+    },
+    async recharge() {
+        await wx.p.request({
+            method: 'POST',
+            url: app.globalData.api + 'user/recharge',
+            data: {
+                userId: this.data.userId,
+                money: this.data.money
+            }
+        }).then(res => {
+            if (res.data.success) {
+                this.setData({
+                    money: 0,
+                    userId: ''
+                })
+                Toast('充值成功！')
+            } else {
+                Toast(res.data.msg || res.data.message)
+            }
+            this.onClose()
         })
     },
     async getVipInfo() {

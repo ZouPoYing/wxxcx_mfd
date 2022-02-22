@@ -36,7 +36,7 @@ Page({
                     userId: this.data.userInfo.userId,
                     barberId: event.currentTarget.dataset.barberid,
                     price: event.currentTarget.dataset.price,
-                    orderType: event.currentTarget.dataset.ordertype
+                    orderType: this.data.value
                 }
             }).then(res => {
                 if (res.data.success) {

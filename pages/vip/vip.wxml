@@ -20,6 +20,7 @@
         </van-cell-group>
     </card-view>
     <van-cell-group>
+        <van-cell title="余额" value="￥{{info.money}}" />
         <van-cell title="性别" value="{{info.sex}}" />
         <van-cell title="年代" value="{{info.year}}" />
         <van-cell title="发长" value="{{info.hair}}" />

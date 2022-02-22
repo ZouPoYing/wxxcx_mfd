@@ -3,15 +3,30 @@
     <view class="view-message">
         <text class="text-message">{{info.message}}</text>
     </view>
-    <v-row>
-        <v-col span="4" class="view-head">
-            <v-img round width="20" height="20" fit="widthFix" src="{{info.barber_head}}" />
-        </v-col>
-        <v-col span="16" class="view-name">
-            <text class="userinfo-nickname">{{info.barber_name}}</text>
-        </v-col>
-        <v-col span="4" class="view-level">
-            <text class="level">{{info.level}}星</text>
-        </v-col>
-    </v-row>
+    <view class="view-star">
+        <text style="margin-right: 20px;">评级</text>
+        <van-rate readonly value="{{ info.level }}" />
+        <text style="margin-left: 10px;">{{info.level}}星</text>
+    </view>
+    <card-view bindtap="goto" data-url="/pages/barber/barber?title={{info.barber_name}}&barber_id={{info.barber_id}}">
+        <v-row>
+            <v-col span="4" class="view-head">
+                <v-img round width="45" height="45" fit="widthFix" src="{{info.barber_head}}" />
+            </v-col>
+            <v-col span="20" class="view-name">
+                <text class="userinfo-nickname">{{info.barber_name}}</text>
+                <text class="text-position">{{info.position}}</text>
+            </v-col>
+        </v-row>
+    </card-view>
+    <card-view>
+        <van-cell-group>
+            <van-cell title="服务项目" value="{{info.order_type}}" />
+            <van-cell title="价格" value="￥{{info.price}}" />
+            <van-cell title="取号时间" value="{{info.start_time}}" />
+            <van-cell title="支付时间" value="{{info.pay_time}}" />
+            <van-cell title="评论时间" value="{{info.end_time}}" />
+        </van-cell-group>
+    </card-view>
 </view>
+<v-toast id="van-toast" />

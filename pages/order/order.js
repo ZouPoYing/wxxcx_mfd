@@ -58,11 +58,11 @@ Page({
     }).then(res => {
       if (res.data.success) {
         Toast('支付成功')
-        this.onClose()
         this.getOrderDetailByUserIdAndStatus()
       } else {
         Toast(res.data.msg || res.data.message)
       }
+      this.onClose()
     })
   },
   async cancelLine(event) {
